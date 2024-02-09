@@ -29,13 +29,13 @@ public class KafkaRoute  extends RouteBuilder {
                         "&sslKeystorePassword=password" +
                         "&sslTruststoreLocation=/home/jboss/trust.jks" +
                         "&sslTruststorePassword=password" +
-                        //"&sslKeyPassword=password" +
+                        "&sslKeyPassword=N1UG7UMpVi4drEXjLl3C3dlDjmGrjKGM" +
                         "&securityProtocol=SSL");
 
         // Kafka Consumer
         from("kafka:{{topic}}?brokers={{broker}}&sslKeystoreLocation=/home/jboss/kafka.jks" +
                 "&sslKeystorePassword=password" +
-               // "&sslKeyPassword=password" +
+                 "&sslKeyPassword=N1UG7UMpVi4drEXjLl3C3dlDjmGrjKGM" +
                 "&sslTruststoreLocation=/home/jboss/trust.jks" +
                 "&sslTruststorePassword=password" +
                 "&securityProtocol=SSL")
