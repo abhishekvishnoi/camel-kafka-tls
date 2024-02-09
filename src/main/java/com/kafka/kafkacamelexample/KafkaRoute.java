@@ -27,13 +27,13 @@ public class KafkaRoute  extends RouteBuilder {
                 .log("hello")
                 .to("kafka:{{topic}}?brokers={{broker}}&sslKeystoreLocation=/home/jboss/kafka.jks" +
                         "&sslKeystorePassword=password" +
-                        "&sslKeyPassword=Gbny9r5Zoxr6" +
+                        "&sslKeyPassword=password" +
                         "&securityProtocol=SSL");
 
         // Kafka Consumer
         from("kafka:{{topic}}?brokers={{broker}}&sslKeystoreLocation=/home/jboss/kafka.jks" +
                 "&sslKeystorePassword=password" +
-                "&sslKeyPassword=Gbny9r5Zoxr6" +
+                "&sslKeyPassword=password" +
                 "&securityProtocol=SSL")
                 .log("Message received from Kafka : ${body}")
                 .log("    on the topic ${headers[kafka.TOPIC]}")
