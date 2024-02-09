@@ -27,6 +27,8 @@ public class KafkaRoute  extends RouteBuilder {
                 .log("hello")
                 .to("kafka:{{topic}}?brokers={{broker}}&sslKeystoreLocation=/home/jboss/kafka.jks" +
                         "&sslKeystorePassword=password" +
+                        "&sslTruststoreLocation=/home/jboss/trust.jks" +
+                        "&sslTruststorePassword=password" +
                         //"&sslKeyPassword=password" +
                         "&securityProtocol=SSL");
 
@@ -34,6 +36,8 @@ public class KafkaRoute  extends RouteBuilder {
         from("kafka:{{topic}}?brokers={{broker}}&sslKeystoreLocation=/home/jboss/kafka.jks" +
                 "&sslKeystorePassword=password" +
                // "&sslKeyPassword=password" +
+                "&sslTruststoreLocation=/home/jboss/trust.jks" +
+                "&sslTruststorePassword=password" +
                 "&securityProtocol=SSL")
                 .log("Message received from Kafka : ${body}")
                 .log("    on the topic ${headers[kafka.TOPIC]}")
