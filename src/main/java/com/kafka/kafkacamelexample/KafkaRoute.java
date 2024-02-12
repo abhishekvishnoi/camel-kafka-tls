@@ -14,8 +14,8 @@ public class KafkaRoute  extends RouteBuilder {
                 .enableCORS(true)
                 .component("jetty")
                 .host("0.0.0.0")
-                .port(8988)
-                .bindingMode(RestBindingMode.json);
+                .port(8988);
+               // .bindingMode(RestBindingMode.json);
 
         rest()
                 .get("/hello-kafka")
