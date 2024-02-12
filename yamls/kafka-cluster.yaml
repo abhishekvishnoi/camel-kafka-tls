@@ -1,0 +1,69 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: Kafka
+metadata:
+  name: my-cluster
+  namespace: strimzi-kafka
+spec:
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}
+  kafka:
+    config:
+      default.replication.factor: 3
+      inter.broker.protocol.version: '3.6'
+      min.insync.replicas: 2
+      offsets.retention.minutes: 20160
+      offsets.topic.replication.factor: 3
+      transaction.state.log.min.isr: 2
+      transaction.state.log.replication.factor: 3
+      unclean.leader.election.enable: false
+    listeners:
+      - name: plain
+        port: 9092
+        tls: true
+        type: internal
+      - authentication:
+          type: tls
+        name: tls
+        port: 9093
+        tls: true
+        type: internal
+    livenessProbe:
+      failureThreshold: 3
+      initialDelaySeconds: 60
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 5
+    readinessProbe:
+      failureThreshold: 3
+      initialDelaySeconds: 180
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 5
+    replicas: 3
+    storage:
+      type: jbod
+      volumes:
+        - deleteClaim: false
+          id: 0
+          size: 100Gi
+          type: persistent-claim
+    version: 3.6.0
+  zookeeper:
+    livenessProbe:
+      failureThreshold: 3
+      initialDelaySeconds: 15
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 5
+    readinessProbe:
+      failureThreshold: 3
+      initialDelaySeconds: 15
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 5
+    replicas: 3
+    storage:
+      deleteClaim: false
+      size: 100Gi
+      type: persistent-claim
