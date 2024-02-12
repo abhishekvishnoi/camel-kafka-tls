@@ -25,15 +25,16 @@ public class KafkaRoute  extends RouteBuilder {
         from("direct:hello-kafka")
                 .routeId("KafkaGreetingRoute")
                 .log("hello")
-                .to("kafka:{{topic}}?brokers={{broker}}&sslKeystoreLocation=/home/jboss/kafka.jks" +
+                .to("kafka:{{topic}}?brokers={{broker}}&sslKeystoreLocation=/home/jboss/user.jks" +
                         "&sslKeystorePassword=password" +
-                        "&sslTruststoreLocation=/home/jboss/trust.jks" +
+                        "&sslTruststoreLocation=/home/jboss/ca.jks" +
                         "&sslTruststorePassword=password" +
                         "&sslKeyPassword=password" +
-                        "&securityProtocol=SSL");
+                        "&securityProtocol=SSL")
+                .log("message sent to the topic");
 
         // Kafka Consumer
-        from("kafka:{{topic}}?brokers={{broker}}&sslKeystoreLocation=/home/jboss/kafka.jks" +
+        /*from("kafka:{{topic}}?brokers={{broker}}&sslKeystoreLocation=/home/jboss/kafka.jks" +
                 "&sslKeystorePassword=password" +
                  "&sslKeyPassword=password" +
                 "&sslTruststoreLocation=/home/jboss/trust.jks" +
@@ -43,7 +44,7 @@ public class KafkaRoute  extends RouteBuilder {
                 .log("    on the topic ${headers[kafka.TOPIC]}")
                 .log("    on the partition ${headers[kafka.PARTITION]}")
                 .log("    with the offset ${headers[kafka.OFFSET]}")
-                .log("    with the key ${headers[kafka.KEY]}");
+                .log("    with the key ${headers[kafka.KEY]}");*/
 
 
     }
