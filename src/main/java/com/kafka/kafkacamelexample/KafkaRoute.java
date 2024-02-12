@@ -34,17 +34,17 @@ public class KafkaRoute  extends RouteBuilder {
                 .log("message sent to the topic");
 
         // Kafka Consumer
-        /*from("kafka:{{topic}}?brokers={{broker}}&sslKeystoreLocation=/home/jboss/kafka.jks" +
+        from("kafka:{{topic}}?brokers={{broker}}&sslKeystoreLocation=/home/jboss/user.jks" +
                 "&sslKeystorePassword=password" +
                  "&sslKeyPassword=password" +
-                "&sslTruststoreLocation=/home/jboss/trust.jks" +
+                "&sslTruststoreLocation=/home/jboss/ca.jks" +
                 "&sslTruststorePassword=password" +
                 "&securityProtocol=SSL")
                 .log("Message received from Kafka : ${body}")
                 .log("    on the topic ${headers[kafka.TOPIC]}")
                 .log("    on the partition ${headers[kafka.PARTITION]}")
                 .log("    with the offset ${headers[kafka.OFFSET]}")
-                .log("    with the key ${headers[kafka.KEY]}");*/
+                .log("    with the key ${headers[kafka.KEY]}");
 
 
     }
