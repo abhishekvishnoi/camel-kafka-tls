@@ -16,7 +16,7 @@ Setup Kafka on Openshift with Strimzi
 
 ##### 4. Gather the following information from the cluster .
 
-   <img src="/images/ca-cert.png" width="60%" height="60%" >
+   <img src="/images/ca-cert.png" width="100%" height="100%" >
 
    1. Locate the secret in your project : **my-cluster-cluster-ca-cert**
    2. Save the **user.p12** file .
@@ -35,7 +35,7 @@ Once you Kafka Cluster is up Create a user using the Operator .
 
 ##### 2. Gather the following information from the secret which is created for the user . 
 
-   <img src="/images/user-secret.png" width="60%" height="60%" >
+   <img src="/images/user-secret.png" width="100%" height="100%" >
 
    1. Locate the secret in your project : **my-user**
    2. Save the **user.p12** file .
@@ -85,4 +85,4 @@ Access your Applciation from the CLI via curl
    curl http://localhost:8988/hello-kafka
    ```
 
-   <img src="/images/app-logs.png" width="60%" height="60%" >
+   <img src="/images/app-logs.png" width="100%" height="100%" >
